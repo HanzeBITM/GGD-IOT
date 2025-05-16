@@ -33,7 +33,7 @@ type TemperatureReading = {
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     // Define temperature threshold for warnings (adjust as needed)
-    const warningThreshold = 30.0;
+    const warningThreshold = 40.0;
 
     // Query all temperature readings, ordered by timestamp (newest first)
     const readings = await sql`

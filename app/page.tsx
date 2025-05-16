@@ -43,9 +43,18 @@ export default function Home() {
   const [staleDataDialogOpen, setStaleDataDialogOpen] = useState(false)
   const [lastDataPoint, setLastDataPoint] = useState<TemperatureReading | null>(null)
   // Update interval in milliseconds (60000ms = 1 minute)
-  const UPDATE_INTERVAL = 60000
+  const UPDATE_INTERVAL = 6000
 
   const router = useRouter()
+
+  const showStaleDataDemo = () => {
+    // If we have temperature data, use the latest point as the "stale" one
+    if (temperatureData.length > 0) {
+      setLastDataPoint(temperatureData[0]);
+    }
+    setIsDataStale(true);
+    setStaleDataDialogOpen(true);
+  };
 
   // Check authentication status
   useEffect(() => {
@@ -334,6 +343,12 @@ export default function Home() {
           {user && (
             <div className="flex items-center">
               <span className="text-sm font-medium mr-3 hidden sm:inline">Ingelogd als: {user.username}</span>
+              <button
+                onClick={showStaleDataDemo}
+                className="flex items-center bg-amber-500/90 hover:bg-amber-600/90 rounded px-3 py-1 text-sm font-medium transition-colors mr-2"
+              >
+                Demo Alarm
+              </button>
               <button
                 onClick={handleLogout}
                 className="flex items-center bg-white/20 hover:bg-white/30 rounded px-3 py-1 text-sm font-medium transition-colors"

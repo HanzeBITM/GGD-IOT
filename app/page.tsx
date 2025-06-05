@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import TemperatureSettings from "@/components/temperature-settings"
 
 // Memoized chart component that only re-renders when data changes
 const MemoizedTemperatureChart = memo(function MemoizedTemperatureChart({
@@ -519,6 +520,15 @@ export default function Home() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        )}
+        {/* settings */}
+        {!loading && !error && user && (
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4 text-slate-800 dark:text-slate-200">
+              Configuratie
+            </h2>
+            <TemperatureSettings />
           </div>
         )}
 

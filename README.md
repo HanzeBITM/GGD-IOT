@@ -157,32 +157,9 @@ De PostgreSQL database bevat de volgende tabellen:
 - `temperatures`: Slaat temperatuurmetingen op met tijdstempel, sensor ID en temperatuurwaarde
 - `users`: Beheert gebruikersaccounts met inloggegevens en rollen
 
-### Database Initialisatie
-Voer de volgende SQL-commando's uit om de database te initialiseren:
+### Database Configuratie
+Voeg de volgende configuratiewaarden toe aan `app.py` met jouw PostgreSQL database-instellingen:
 
-```sql
-CREATE TABLE IF NOT EXISTS temperatures (
-    id SERIAL PRIMARY KEY,
-    sensor_id VARCHAR(50) NOT NULL,
-    temperature FLOAT NOT NULL,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    role VARCHAR(20) DEFAULT 'user',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-### GGD-IOT Project - Temperatuurmonitoringssysteem
-### Installatie en Configuratie
-1. Zorg ervoor dat de PostgreSQL database draait en toegankelijk is.
-2. Maak de database en tabellen aan zoals hierboven beschreven.
-3. Configureer de Flask backend met de juiste database- en Telegram-instellingen in het `.env` bestand.
-4. Start de Flask server en de Next.js frontend zoals beschreven in de secties hierboven.
-### Beveiliging
 De applicatie maakt gebruik van bcrypt voor het hashen van wachtwoorden en implementeert basis beveiligingsmaatregelen zoals CORS-beperkingen en inputvalidatie. Zorg ervoor dat de server alleen toegankelijk is via HTTPS in een productieomgeving.
 ### Gebruikersinterface
 De frontend is gebouwd met Next.js en biedt een responsieve gebruikersinterface. Belangrijke pagina's zijn:

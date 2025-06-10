@@ -10,9 +10,40 @@ Het systeem monitort temperatuurmetingen van PICO W sensoren, slaat de gegevens 
 
 ## Projectstructuur
 
-GGD-IOT/ ├── app/ # Next.js applicatiebestanden │ ├── api/ # API routes voor Next.js │ │ ├── settings/ │ │ │ └── thresholds/ # API routes voor temperatuurdrempels │ │ │ └── route.ts # GET/PUT endpoints voor drempelinstellingen │ ├── login/ # Inlogpagina │ │ └── page.tsx # Inlogformulier │ ├── register/ # Registratiepagina │ │ └── page.tsx # Registratieformulier │ ├── layout.tsx # Hoofdlayout component │ └── page.tsx # Hoofddashboard pagina ├── components/ # Herbruikbare React componenten │ ├── ui/ # UI componenten (shadcn/ui) │ │ ├── alert.tsx # Waarschuwing component │ │ ├── button.tsx # Knop component │ │ ├── card.tsx # Kaart component │ │ ├── dialog.tsx # Dialoog component │ │ ├── input.tsx # Invoer component │ │ ├── label.tsx # Label component │ │ ├── slider.tsx # Schuifregelaar component │ │ ├── switch.tsx # Schakelaar component │ │ ├── table.tsx # Tabel component │ │ ├── tabs.tsx # Tabbladen component │ │ └── tooltip.tsx # Tooltip component │ ├── connection-status.tsx # Verbindingsstatus component │ ├── temperature-display.tsx # Temperatuurweergave component │ ├── temperature-line-chart.tsx # Temperatuurgrafiek component │ ├── temperature-settings.tsx # Temperatuurinstellingen component │ └── time-range-filter.tsx # Tijdbereikfilter component ├── lib/ # Hulpfuncties en bibliotheken │ └── db.tsx # Database hulpprogramma's ├── app.py # Flask backend server └── README.md # Projectdocumentatie
-
-
+GGD-IOT/
+├── app/                                # Next.js applicatiebestanden
+│   ├── api/                            # API routes voor Next.js
+│   │   └── settings/
+│   │       └── thresholds/             # API routes voor temperatuurdrempels
+│   │           └── route.ts            # GET/PUT endpoints voor drempelinstellingen
+│   ├── login/                          # Inlogpagina
+│   │   └── page.tsx                    # Inlogformulier
+│   ├── register/                       # Registratiepagina
+│   │   └── page.tsx                    # Registratieformulier
+│   ├── layout.tsx                      # Hoofdlayout component
+│   └── page.tsx                        # Hoofddashboard pagina
+├── components/                         # Herbruikbare React componenten
+│   ├── ui/                             # UI componenten (shadcn/ui)
+│   │   ├── alert.tsx                   # Waarschuwing component
+│   │   ├── button.tsx                  # Knop component
+│   │   ├── card.tsx                    # Kaart component
+│   │   ├── dialog.tsx                  # Dialoog component
+│   │   ├── input.tsx                   # Invoer component
+│   │   ├── label.tsx                   # Label component
+│   │   ├── slider.tsx                  # Schuifregelaar component
+│   │   ├── switch.tsx                  # Schakelaar component
+│   │   ├── table.tsx                   # Tabel component
+│   │   ├── tabs.tsx                    # Tabbladen component
+│   │   └── tooltip.tsx                 # Tooltip component
+│   ├── connection-status.tsx           # Verbindingsstatus component
+│   ├── temperature-display.tsx         # Temperatuurweergave component
+│   ├── temperature-line-chart.tsx      # Temperatuurgrafiek component
+│   ├── temperature-settings.tsx        # Temperatuurinstellingen component
+│   └── time-range-filter.tsx           # Tijdbereikfilter component
+├── lib/                                # Hulpfuncties en bibliotheken
+│   └── db.tsx                          # Database hulpprogramma's
+├── app.py                              # Flask backend server
+└── README.md                           # Projectdocumentatie
 
 
 ## Kerncomponenten
@@ -61,8 +92,6 @@ De frontend biedt een gebruiksvriendelijke interface voor het monitoren van temp
 1. Installeer Python-afhankelijkheden:
    ```bash
    pip install flask requests psycopg2-binary bcrypt flask-cors
-
-
     ```
 2. Configureer de PostgreSQL database en maak een `.env` bestand aan met de volgende variabelen:
 

@@ -157,8 +157,73 @@ De PostgreSQL database bevat de volgende tabellen:
 - `temperatures`: Slaat temperatuurmetingen op met tijdstempel, sensor ID en temperatuurwaarde
 - `users`: Beheert gebruikersaccounts met inloggegevens en rollen
 
+### Database Initialisatie
+Voer de volgende SQL-commando's uit om de database te initialiseren:
+
+```sql
+CREATE TABLE IF NOT EXISTS temperatures (
+    id SERIAL PRIMARY KEY,
+    sensor_id VARCHAR(50) NOT NULL,
+    temperature FLOAT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+### GGD-IOT Project - Temperatuurmonitoringssysteem
+### Installatie en Configuratie
+1. Zorg ervoor dat de PostgreSQL database draait en toegankelijk is.
+2. Maak de database en tabellen aan zoals hierboven beschreven.
+3. Configureer de Flask backend met de juiste database- en Telegram-instellingen in het `.env` bestand.
+4. Start de Flask server en de Next.js frontend zoals beschreven in de secties hierboven.
+### Beveiliging
+De applicatie maakt gebruik van bcrypt voor het hashen van wachtwoorden en implementeert basis beveiligingsmaatregelen zoals CORS-beperkingen en inputvalidatie. Zorg ervoor dat de server alleen toegankelijk is via HTTPS in een productieomgeving.
+### Gebruikersinterface
+De frontend is gebouwd met Next.js en biedt een responsieve gebruikersinterface. Belangrijke pagina's zijn:
+- **Dashboard**: Toont realtime temperatuurmetingen en waarschuwingen
+- **Instellingen**: Voor het configureren van temperatuurdrempels en gebruikersinstellingen
+- **Login/Registratie**: Voor gebruikersauthenticatie
+
+### API Documentatie
+De API biedt de volgende eindpunten:
+- `POST /temperature`: Ontvangt temperatuurmetingen van sensoren
+- `GET /temperature/history`: Haalt historische temperatuurgegevens op
+- `GET /settings/thresholds`: Haalt de huidige temperatuurdrempels op
+- `PUT /settings/thresholds`: Wijzigt de temperatuurdrempels
+- `POST /auth/register`: Registreert een nieuwe gebruiker
+- `POST /auth/login`: Logt een gebruiker in en retourneert een sessie token
+- `GET /status`: Retourneert de serverstatus
+- `GET /check_connection`: Controleert de verbindingsstatus van sensoren
+
+### Installatievereisten
+- Python 3.8 of hoger
+
+- Node.js 18 of hoger
+- pnpm (of npm/yarn)
+- PostgreSQL database
+- Flask, psycopg2-binary, bcrypt, requests, flask-cors Python pakketten
+- Next.js en shadcn/ui voor de frontend
+
+### Installatie Stappen
+1. Installeer de vereiste Python-pakketten met `pip install -r requirements.txt`.
+2. Installeer de vereiste Node.js pakketten in de `app` map met `pnpm install`.
+3. Configureer de PostgreSQL database en maak een `.env` bestand aan met de juiste instellingen.
+4. Start de Flask backend server met `python app.py`.
+5. Start de Next.js frontend applicatie met `pnpm dev` in de `app` map.
+
+### Belangrijke Notities
+- Zorg ervoor dat de PostgreSQL database toegankelijk is voor de Flask backend.
+- De Telegram bot moet geconfigureerd zijn met de juiste token en chat ID om waarschuwingen te kunnen versturen.
+
 ### Gebruikersauthenticatie
 Gebruikers kunnen zich registreren en inloggen via de webinterface. De backend valideert gebruikersgegevens en beheert sessies. Wachtwoorden worden veilig opgeslagen met bcrypt hashing.
+
 ### Toekomstige Verbeteringen
 - Ondersteuning voor meerdere temperatuursensoren
 - Realtime notificaties via WebSockets

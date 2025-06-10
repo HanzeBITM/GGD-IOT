@@ -9,7 +9,7 @@ Dit project is een temperatuurmonitoringssysteem dat bestaat uit twee hoofdcompo
 Het systeem monitort temperatuurmetingen van PICO W sensoren, slaat de gegevens op in een PostgreSQL database, verstuurt waarschuwingen via Telegram wanneer temperaturen de geconfigureerde drempels overschrijden, en toont realtime informatie op een webdashboard.
 
 ## Projectstructuur
-
+```plaintext
 GGD-IOT/
 ├── app/                                # Next.js applicatiebestanden
 │   ├── api/                            # API routes voor Next.js
@@ -44,7 +44,7 @@ GGD-IOT/
 │   └── db.tsx                          # Database hulpprogramma's
 ├── app.py                              # Flask backend server
 └── README.md                           # Projectdocumentatie
-
+``` 
 
 ## Kerncomponenten
 

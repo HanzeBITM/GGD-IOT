@@ -206,3 +206,5 @@ Gebruikers kunnen zich registreren en inloggen via de webinterface. De backend v
 - Realtime notificaties via WebSockets
 - Verbeterde gebruikersinterface met meer visualisaties 
 - Uitbreiding van de API met meer functionaliteit
+
+
